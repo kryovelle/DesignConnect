@@ -1,0 +1,33 @@
+RewriteEngine On
+RewriteBase /DesignConnect/
+
+# Allow direct access to static assets (images, css, js)
+RewriteRule ^(images|css|js)/(.*)$ - [L]
+
+# ============================================
+# ADMIN AREA
+# ============================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^abc_Admin(/.*)?$ abc_Admin/index.php [L,QSA]
+
+# ============================================
+# CLIENT/CUSTOMER AREA
+# ============================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Client(/.*)?$ Client/index.php [L,QSA]
+
+# ============================================
+# DESIGNER AREA
+# ============================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^Designer(/.*)?$ Designer/index.php [L,QSA]
+
+# ============================================
+# PUBLIC AREA (default)
+# ============================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ Public/index.php [L,QSA]
